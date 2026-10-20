@@ -35,9 +35,7 @@ print("beta0_hat =", beta0_hat)
 print("beta1_hat =", beta1_hat)
 
 ##Part 3
-
 model = smf.ols("Amazon_Price ~ Pieces", data=df).fit()
-
 print(model.summary())
 
 ## Part 4
@@ -64,30 +62,17 @@ sm.qqplot(residuals, line='45')
 plt.title("Normal Q-Q Plot")
 plt.show()
 
-# =====================================================
-# Question 6: Test for linear association
-# H0: beta1 = 0
-# HA: beta1 != 0
-# =====================================================
+## Part 6
 
 print("Slope test p-value: \n")
 print(model.pvalues["Pieces"])
 
-# =====================================================
-# Question 8: Residual standard error
-# =====================================================
-
+## Part 8
 sigma_hat = np.sqrt(model.mse_resid)
+print("Residual Standard Error = ", sigma_hat)
 
-print("Residual Standard Error = \n", sigma_hat)
-
-# =====================================================
-# Question 9:
-# Confidence and Prediction Bands
-# =====================================================
-
-x_grid = np.linspace(X.min(), X.max(), 100)
-
+## Part 9
+x_grid = np.linspace(x.min(), x.max(), 100)
 pred_df = pd.DataFrame({"Pieces": x_grid})
 
 predictions = model.get_prediction(pred_df)
@@ -95,19 +80,15 @@ pred_summary = predictions.summary_frame(alpha=0.05)
 
 plt.figure(figsize=(10, 6))
 
-plt.scatter(X, Y, alpha=0.7)
+plt.scatter(x, y, alpha=0.7)
 
-plt.plot(
-    x_grid,
-    pred_summary["mean"],
-    color="red",
-    label="Regression Line"
+plt.plot(x_grid,  pred_summary["mean"],
+    color="red", label="Regression Line"
 )
 
 # Confidence band
 plt.fill_between(
-    x_grid,
-    pred_summary["mean_ci_lower"],
+    x_grid,pred_summary["mean_ci_lower"],
     pred_summary["mean_ci_upper"],
     color="blue",
     alpha=0.2,
@@ -135,5 +116,5 @@ plt.show()
 new_x = pd.DataFrame({"Pieces": [95]})
 
 pred95 = model.get_prediction(new_x)
-print("Prediction for x*=95 \n")
+print("Prediction for x *= 95 \n")
 print(pred95.summary_frame(alpha=0.05))
