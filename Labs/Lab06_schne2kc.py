@@ -11,7 +11,7 @@ from math import comb
 
 
 ## import heart disease data frame
-df = pd.read_csv("Heart_data.csv")
+df = pd.read_csv("../Heart_data.csv")
 
 
 ## patients with and without heart disease, describes the continuous data in the df

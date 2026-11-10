@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="4">
   <component name="NewModuleRootManager">
-    <orderEntry type="jdk" jdkName="~\anaconda3\envs\stat-3041-use-this-one" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="~\AppData\Local\Python\pythoncore-3.14-64\python.exe" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
-  <component name="PyDocumentationSettings" />
-  <component name="TestRunnerService" />
 </module>
